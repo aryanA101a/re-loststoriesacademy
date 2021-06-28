@@ -7,7 +7,9 @@ import 'package:loststoriesacademy/widget/widgets.dart';
 
 class LessonsPage extends StatelessWidget {
   final courseId;
-  LessonsPage({this.courseId});
+  final img;
+  final title;
+  LessonsPage({this.courseId, this.img, this.title});
   var _lessons;
   Future lessonsFetch() async {
     await LessonServices.getLesson(courseId).then((lessons) {
@@ -35,10 +37,7 @@ class LessonsPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 22, top: 33),
                     child: Text(
-                      _lessons[0]
-                          .courseTitle
-                          .toString()
-                          .replaceFirst('<br> ', ''),
+                      title.toString(),
                       style: GoogleFonts.poppins(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -52,7 +51,7 @@ class LessonsPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
-                            _lessons[0].courseImg,
+                            img,
                             // fit: BoxFit.contain,
                           ),
                         ),
@@ -71,10 +70,10 @@ class LessonsPage extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: _lessons[0].lessons.length,
+                      itemCount: _lessons.length,
                       itemBuilder: (context, index) {
                         return LessonListTile(
-                          title: _lessons[0].lessons[index].lessonTitle,
+                          title: _lessons[index].title.rendered,
                           subtitle: "... min",
                           onTap: () {},
                         );

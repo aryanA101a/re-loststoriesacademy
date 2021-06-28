@@ -13,7 +13,7 @@ class CoursesPage extends StatelessWidget {
 
   Future courseCategoryFetch() async {
     await CoursesCategoryServices.getCoursesCategory().then((cousesCategory) {
-      LessonServices.getLesson(13024);
+      // LessonServices.getLesson(13024);
       _cousesCategory = cousesCategory;
     });
   }
@@ -120,6 +120,11 @@ class CoursesPage extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => LessonsPage(
                                 courseId: _cousesCategory[index].id,
+                                img: _cousesCategory[index]
+                                    .embedded
+                                    .wpFeaturedmedia[0]
+                                    .sourceUrl,
+                                title: _cousesCategory[index].title.rendered,
                               ),
                             ));
                       },
