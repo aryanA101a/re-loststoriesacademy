@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:loststoriesacademy/Screens/authentication/login/login.dart';
 import 'package:loststoriesacademy/Screens/bottom_nav_bar/navbar.dart';
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() async {
+   //debugRepaintRainbowEnabled = true;
 WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setPreferredOrientations(

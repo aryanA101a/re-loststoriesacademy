@@ -6,7 +6,14 @@ import 'package:loststoriesacademy/constants/dimensions.dart';
 import 'package:loststoriesacademy/widget/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SubscriptionPage extends StatelessWidget {
+class SubscriptionPage extends StatefulWidget {
+  @override
+  _SubscriptionPageState createState() => _SubscriptionPageState();
+}
+
+class _SubscriptionPageState extends State<SubscriptionPage> {
+  String _chosenValue;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -51,9 +58,9 @@ let’s jam together
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               children: [
-                SubsPack(),
-                SubsLiveClass(),
-                SubStudio(),
+                subPack(),
+                subsLiveClass(),
+                subStudio(),
               ],
             ),
           ),
@@ -62,7 +69,7 @@ let’s jam together
     );
   }
 
-  Widget SubsLiveClass() {
+  Widget subsLiveClass() {
     return Stack(children: [
       Container(
         margin: EdgeInsets.only(left: 20, bottom: 30, right: 20),
@@ -294,7 +301,7 @@ racks and presets, Track Promotion
     ]);
   }
 
-  Widget SubStudio() {
+  Widget subStudio() {
     return Stack(children: [
       Container(
         margin: EdgeInsets.only(left: 20, bottom: 30, right: 20),
@@ -519,16 +526,8 @@ racks adn presents, Track Promotion
           ))
     ]);
   }
-}
 
-class SubsPack extends StatelessWidget {
-  const SubsPack({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+  Widget subPack() {
     return Stack(children: [
       Container(
         margin: EdgeInsets.only(left: 20, bottom: 30, right: 20),
@@ -779,29 +778,43 @@ every few days
             borderRadius: BorderRadius.circular(20), color: Color(0xFF1A1C29)),
       ),
       Positioned(
-          top: 10,
-          right: 40,
+          top: 8,
+          right: 35,
           child: Container(
             height: 30,
-            width: 80,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    "Monthly",
-                    style: GoogleFonts.poppins(
-                        fontSize: 10,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
+            width: 120,
+            child: DropdownButton<String>(
+                dropdownColor: HexColor("#E75755"),
+                value: _chosenValue,
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                items: ["Monthly", "Anually"]
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        value,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  );
+                }).toList(),
+                hint: Text(
+                  "Select a plan",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600),
                 ),
-                Icon(
-                  Icons.arrow_drop_down_sharp,
-                  color: Colors.white,
-                )
-              ],
-            ),
+                iconEnabledColor: Colors.white,
+                iconDisabledColor: Colors.white,
+                onChanged: (String value) {
+                  setState(() {
+                    _chosenValue = value;
+                  });
+                }),
             decoration: BoxDecoration(
                 color: HexColor("#E75755"),
                 borderRadius: BorderRadius.circular(20)),
