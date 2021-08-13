@@ -4,22 +4,22 @@ import 'package:loststoriesacademy/models/podcastlist.dart';
 
 class PodcastsListsServices {
   static const String pclUrl =
-      "https://www.loststoriesacademy.com/wp-json/wp/v2/podcasts/?&per_page=100";
+      "https://www.loststoriesacademy.com/wp-json/wp/v2/podcasts/?per_page=100&_embed";
 
-  static Future<List<PodcastsLists>> getPodcastsLists() async {
+  static Future<List<PodcastsList>> getPodcastsLists() async {
     try {
       final response = await http.get(Uri.parse(pclUrl));
       if (200 == response.statusCode) {
         // print(response.body);
-        final List<PodcastsLists> podCastList =
-            podcastsListsFromJson(response.body).cast<PodcastsLists>();
+        final List<PodcastsList> podCastList =
+            podcastsListFromJson(response.body).cast<PodcastsList>();
         // print(podCastList[1]);
         return podCastList;
       } else {
-        return List<PodcastsLists>();
+        return List<PodcastsList>();
       }
     } catch (e) {
-      return List<PodcastsLists>();
+      return List<PodcastsList>();
     }
   }
 }

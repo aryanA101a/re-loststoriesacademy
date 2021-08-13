@@ -52,6 +52,7 @@ dependencies:
   google_nav_bar: ^5.0.3
   custom_splash: ^0.0.2
   dio: ^4.0.0
+  better_player: ^0.0.61
    
  
 

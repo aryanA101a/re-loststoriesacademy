@@ -5,7 +5,7 @@ import 'package:loststoriesacademy/Screens/drawer.dart';
 import 'package:loststoriesacademy/constants/colors.dart';
 import 'package:loststoriesacademy/models/courseslist.dart';
 import 'package:loststoriesacademy/services/CourcesCategoryServices.dart';
-import 'package:loststoriesacademy/services/singleLesson.dart';
+import 'package:loststoriesacademy/services/lessonServices.dart';
 import 'package:loststoriesacademy/widget/widgets.dart';
 
 class CoursesPage extends StatelessWidget {

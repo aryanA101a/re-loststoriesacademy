@@ -9,14 +9,14 @@ class PodcastListTile extends StatelessWidget {
     // @required this.thumbnail,
     @required this.title,
     @required this.subtitle,
-    // @required this.height,
+    @required this.img,
     @required this.onTap,
   });
 
   // final Widget thumbnail;
   final String title;
   final String subtitle;
-  // final double height;
+  final String img;
   final onTap;
 
   @override
@@ -37,7 +37,7 @@ class PodcastListTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.network(
-                    'https://d8skzlz85ruek.cloudfront.net/wp-content/uploads/1-Music-Industry.jpg',
+                    img,
                   ),
                 )),
             title: Text(

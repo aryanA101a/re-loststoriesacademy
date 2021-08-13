@@ -27,9 +27,8 @@ class PodcastPage extends StatefulWidget {
 
 class _PodcastPageState extends State<PodcastPage>
     with AutomaticKeepAliveClientMixin<PodcastPage> {
-  List<PodcastsLists> _podcastLists;
+  List<PodcastsList> _podcastLists;
   bool _loading;
- 
 
   Future podcastListFetch() async {
     await PodcastsListsServices.getPodcastsLists().then((podcastsLists) {
@@ -93,31 +92,44 @@ class _PodcastPageState extends State<PodcastPage>
                       scrollDirection: Axis.horizontal,
                       itemCount: _podcastLists.length,
                       itemBuilder: (context, index) {
+                        print(_podcastLists[index].title.rendered.toString());
+                        print(_podcastLists[index]
+                            .embedded
+                            .wpFeaturedmedia[0]
+                            .mediaDetails
+                            .sizes
+                            .medium
+                            .sourceUrl
+                            .toString());
                         return podcastShadowBox(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => PodcastAudioPlayer(
-                                      lang: {
-                                        'eng': _podcastLists[index]
-                                            .acf
-                                            .track[0]
-                                            .trackFile,
-                                        'hin': _podcastLists[index]
-                                            .acf
-                                            .track[1]
-                                            .trackFile,
-                                        'guj': _podcastLists[index]
-                                            .acf
-                                            .track[2]
-                                            .trackFile,
-                                      },
-                                      title: _podcastLists[index]
-                                          .title
-                                          .rendered
-                                          .split("; ")[1],
-                                    ),
+                                        lang: {
+                                          'eng': _podcastLists[index]
+                                              .acf
+                                              .track[0]
+                                              .trackFile,
+                                          'hin': _podcastLists[index]
+                                              .acf
+                                              .track[1]
+                                              .trackFile,
+                                          'guj': _podcastLists[index]
+                                              .acf
+                                              .track[2]
+                                              .trackFile,
+                                        },
+                                        title: _podcastLists[index]
+                                            .title
+                                            .rendered
+                                            .split("; ")[1],
+                                        img: _podcastLists[index]
+                                            .embedded
+                                            .wpFeaturedmedia[0]
+                                            .sourceUrl
+                                            .toString()),
                                   ));
                             },
                             text: _podcastLists[index]
@@ -138,7 +150,6 @@ class _PodcastPageState extends State<PodcastPage>
                         style: GoogleFonts.poppins(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                  
                     ],
                   ),
                 ),
@@ -157,8 +168,13 @@ class _PodcastPageState extends State<PodcastPage>
                     scrollDirection: Axis.vertical,
                     itemCount: _podcastLists.length,
                     itemBuilder: (context, index) {
-                      PodcastsLists podcastsLists = _podcastLists[index];
+                      PodcastsList podcastsLists = _podcastLists[index];
                       return PodcastListTile(
+                        img: _podcastLists[index]
+                            .embedded
+                            .wpFeaturedmedia[0]
+                            .sourceUrl
+                            .toString(),
                         title: podcastsLists.title.rendered.split("; ")[1],
                         subtitle: "15 - 25 min",
                         onTap: () {
@@ -166,14 +182,21 @@ class _PodcastPageState extends State<PodcastPage>
                               context,
                               MaterialPageRoute(
                                 builder: (context) => PodcastAudioPlayer(
-                                  lang: {
-                                    'eng': podcastsLists.acf.track[0].trackFile,
-                                    'hin': podcastsLists.acf.track[1].trackFile,
-                                    'guj': podcastsLists.acf.track[2].trackFile,
-                                  },
-                                  title: podcastsLists.title.rendered
-                                      .split("; ")[1],
-                                ),
+                                    lang: {
+                                      'eng':
+                                          podcastsLists.acf.track[0].trackFile,
+                                      'hin':
+                                          podcastsLists.acf.track[1].trackFile,
+                                      'guj':
+                                          podcastsLists.acf.track[2].trackFile,
+                                    },
+                                    title: podcastsLists.title.rendered
+                                        .split("; ")[1],
+                                    img: _podcastLists[index]
+                                        .embedded
+                                        .wpFeaturedmedia[0]
+                                        .sourceUrl
+                                        .toString()),
                               ));
                         },
                       );

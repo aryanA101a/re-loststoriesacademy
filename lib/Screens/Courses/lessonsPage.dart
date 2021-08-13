@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loststoriesacademy/Screens/Courses/lessonVideoPage.dart';
 import 'package:loststoriesacademy/constants/colors.dart';
-import 'package:loststoriesacademy/services/singleLesson.dart';
+import 'package:loststoriesacademy/models/lessons.dart';
+import 'package:loststoriesacademy/services/lessonServices.dart';
 import 'package:loststoriesacademy/widget/listtileWidget.dart';
 import 'package:loststoriesacademy/widget/widgets.dart';
 
@@ -10,16 +14,18 @@ class LessonsPage extends StatelessWidget {
   final img;
   final title;
   LessonsPage({this.courseId, this.img, this.title});
-  var _lessons;
+  Lessons _lessons;
   Future lessonsFetch() async {
-    await LessonServices.getLesson(courseId).then((lessons) {
+    await LessonServices.getLessons(courseId).then((lessons) {
       _lessons = lessons;
-      // print(_lessons[0].courseImg);
+      print(_lessons.curriculum[0].label);
+      print('xxxxxxxxxxxxxxxxxxx');
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    log(courseId.toString());
     return Scaffold(
       appBar: appBar(titleText: 'Lessons', color: blue_sofa),
       body: FutureBuilder(
@@ -31,6 +37,7 @@ class LessonsPage extends StatelessWidget {
               );
             }
             if (snapshot.connectionState == ConnectionState.done) {
+              log(_lessons.curriculum[1].label.toString());
               return ListView(
                 shrinkWrap: true,
                 children: [
@@ -70,13 +77,29 @@ class LessonsPage extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: _lessons.length,
+                      itemCount: _lessons.curriculum.length,
                       itemBuilder: (context, index) {
-                        return LessonListTile(
-                          title: _lessons[index].title.rendered,
-                          subtitle: "... min",
-                          onTap: () {},
-                        );
+                        return _lessons.curriculum[index].label != null
+                            ? LessonListTile(
+                                title:
+                                    _lessons.curriculum[index].label.toString(),
+                                subtitle: "... min",
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LessonVideoPage(
+                                          title: _lessons
+                                                .curriculum[index].label
+                                                .toString(),
+                                          
+                                            lessonId: _lessons
+                                                .curriculum[index].lessonId
+                                                .toString()),
+                                      ));
+                                },
+                              )
+                            : Container();
                       }),
                 ],
               );

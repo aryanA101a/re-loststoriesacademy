@@ -10,14 +10,14 @@ class JsonTesting extends StatefulWidget {
 }
 
 class _JsonTestingState extends State<JsonTesting> {
-  List<PodcastsLists> _podcastLists;
+  List<PodcastsList> _podcastLists;
   
   bool _loading;
   @override
   void initState() {
     super.initState();
     PodcastsListsServices.getPodcastsLists().then((podcastsLists) {
-      _podcastLists = podcastsLists.cast<PodcastsLists>();
+      _podcastLists = podcastsLists.cast<PodcastsList>();
       _loading = false;
     });
   }
@@ -33,7 +33,7 @@ class _JsonTestingState extends State<JsonTesting> {
         child: ListView.builder(
             itemCount: _podcastLists.length,
             itemBuilder: (context, index) {
-              PodcastsLists podcastsLists = _podcastLists[index];
+              PodcastsList podcastsLists = _podcastLists[index];
               return ListTile(
                 title: Text(podcastsLists.title.rendered.split("; ")[1]),
                 subtitle: Text(podcastsLists.link),

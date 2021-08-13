@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:audioplayer/audioplayer.dart';
@@ -27,7 +28,8 @@ enum PlayerState { stopped, playing, paused }
 class PodcastAudioPlayer extends StatefulWidget {
   final Map lang;
   final title;
-  PodcastAudioPlayer({this.lang, this.title});
+  final String img;
+  PodcastAudioPlayer({this.lang, this.title, this.img});
   @override
   _PodcastAudioPlayerState createState() => _PodcastAudioPlayerState();
 }
@@ -68,7 +70,7 @@ class _PodcastAudioPlayerState extends State<PodcastAudioPlayer> {
 
   @override
   void initState() {
-    // print();
+    log(widget.img.toString());
     WidgetsBinding.instance.addPostFrameCallback((_) {
       audioUrl =
           widget.lang[context.read<MPUIFunctions>().getLanguage.toLowerCase()];
@@ -332,8 +334,7 @@ class _PodcastAudioPlayerState extends State<PodcastAudioPlayer> {
                     aspectRatio: 1 / 1,
                     child: Container(
                       margin: EdgeInsets.all(23),
-                      // height: 300,
-                      // width: 320,
+                      child: Image.network(widget.img),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(width: 2, color: base_purple)),
