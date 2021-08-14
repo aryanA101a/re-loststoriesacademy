@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 // import 'package:loststoriesacademy/UI/games/Games.dart';
 
 import 'package:loststoriesacademy/models/lessons.dart';
+import 'package:loststoriesacademy/models/reviews.dart';
 import 'package:loststoriesacademy/models/singleLesson.dart';
 
 class LessonServices {
@@ -39,6 +40,24 @@ class LessonServices {
         print('lesson.id');
 
         return lesson;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+  static Future<Reviews> getReviews(id) async {
+    String url =
+        "https://www.loststoriesacademy.com/wp-json/ms_lms/v1/course_reviews?id=$id";
+    try {
+      final response = await http.get(Uri.parse(url));
+      // print(response.statusCode);
+      if (200 == response.statusCode) {
+        // print(response.body);
+
+        final Reviews reviews = reviewsFromJson(response.body);
+        
+
+        return reviews;
       }
     } catch (e) {
       print(e);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loststoriesacademy/Screens/authentication/login/login.dart';
 import 'package:loststoriesacademy/Screens/authentication/signup/signup.dart';
-import 'package:loststoriesacademy/Screens/Courses/coursesPage.dart';
+import 'package:loststoriesacademy/Screens/Courses/coursesListPage.dart';
 import 'package:loststoriesacademy/Screens/profile_page/Profile.dart';
 
 
@@ -25,7 +25,7 @@ class _InitialPagesState extends State<InitialPages> {
         children: [
           Login(),
           SignUp(),
-          CoursesPage(),
+          CoursesListPage(),
           Profile(),
         
         ],

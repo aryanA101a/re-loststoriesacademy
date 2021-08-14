@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:loststoriesacademy/Screens/Courses/coursesPage.dart';
+import 'package:loststoriesacademy/Screens/Courses/coursesListPage.dart';
 import 'package:loststoriesacademy/Screens/bottom_nav_bar/navbar_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -17,7 +17,7 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  List<Widget> pages = [CoursesPage(), PodcastPage(), GamesPage(), Profile()];
+  List<Widget> pages = [CoursesListPage(), PodcastPage(), GamesPage(), Profile()];
 
   // int _selectedIndex = 0;
   static const TextStyle optionStyle =

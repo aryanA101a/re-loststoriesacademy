@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loststoriesacademy/Screens/Courses/lessonsPage.dart';
+import 'package:loststoriesacademy/Screens/Courses/coursePage.dart';
 import 'package:loststoriesacademy/Screens/drawer.dart';
 import 'package:loststoriesacademy/constants/colors.dart';
 import 'package:loststoriesacademy/models/courseslist.dart';
@@ -8,13 +8,14 @@ import 'package:loststoriesacademy/services/CourcesCategoryServices.dart';
 import 'package:loststoriesacademy/services/lessonServices.dart';
 import 'package:loststoriesacademy/widget/widgets.dart';
 
-class CoursesPage extends StatelessWidget {
+class CoursesListPage extends StatelessWidget {
   List _cousesCategory;
 
   Future courseCategoryFetch() async {
     await CoursesCategoryServices.getCoursesCategory().then((cousesCategory) {
       // LessonServices.getLesson(13024);
       _cousesCategory = cousesCategory;
+      print(cousesCategory[0].content.rendered);
     });
   }
 
@@ -118,7 +119,7 @@ class CoursesPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => LessonsPage(
+                              builder: (context) => CoursePage(
                                 courseId: _cousesCategory[index].id,
                                 img: _cousesCategory[index]
                                     .embedded

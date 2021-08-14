@@ -111,9 +111,7 @@ class _LessonVideoPageState extends State<LessonVideoPage> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
             ),
-            Divider(
-              height: 0,
-            ),
+            
             Divider(
               height: 0,
             ),
