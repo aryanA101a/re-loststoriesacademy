@@ -11,7 +11,7 @@ class Gold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WebviewScaffold(
-      appBar: appBar(titleText: "Gold", color: blue_sofa, leadingWidget: null),
+      appBar: appBar(titleText: "Gold", color: black, leadingWidget: null),
       url: urlString);
   }
 }

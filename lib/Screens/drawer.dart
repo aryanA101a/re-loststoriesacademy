@@ -34,8 +34,9 @@ class HomePageDrawer extends StatelessWidget {
           FutureBuilder(
               future: fetchUserData(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasError) {
-                  return Text("Something went wrong");
+                if (snapshot.data == null) {
+                  return Text(
+                      "Something went wrong. Most probably jwt token expired");
                 }
 
                 if (snapshot.connectionState == ConnectionState.done) {
@@ -75,13 +76,13 @@ class HomePageDrawer extends StatelessWidget {
               }),
           ListTile(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Gold()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Gold()));
             },
             title: Text("Gold"),
           ),
           ListTile(
-              onTap: () {
+            onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => LiveClasses()));
             },
@@ -89,8 +90,8 @@ class HomePageDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Dijing()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Dijing()));
             },
             title: Text("Djing"),
           ),
@@ -99,11 +100,11 @@ class HomePageDrawer extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ForumPage()));
             },
-            title: Text("FAQ"),
+            title: Text("Forum"),
           ),
           ListTile(
             title: Text("Contact Us"),
-                 onTap: () {
+            onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ContactUs()));
             },
@@ -114,8 +115,8 @@ class HomePageDrawer extends StatelessWidget {
             },
             title: Text("Logout"),
           ),
-             ListTile(
-             onTap: () {
+          ListTile(
+            onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => SubscriptionPage()));
             },

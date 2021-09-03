@@ -10,7 +10,7 @@ class LiveClasses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WebviewScaffold(
-      appBar: appBar(titleText: "Live Classes", color: blue_sofa, leadingWidget: null),
+      appBar: appBar(titleText: "Live Classes", color: black, leadingWidget: null),
        url: urlString,
       withZoom: false,
     );

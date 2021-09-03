@@ -32,7 +32,7 @@ class _GamesPageState extends State<GamesPage>
     // print((size.height / size.width) * 10);
     return Scaffold(
       appBar: appBar(
-        color: blue_sofa,
+        color: black,
         titleText: "Games",
         leadingWidget: null,
       ),

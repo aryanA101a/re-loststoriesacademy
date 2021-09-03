@@ -23,7 +23,7 @@ class CoursesListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: appBar(titleText: 'Courses', color: blue_sofa),
+          appBar: appBar(titleText: 'Courses', color: black),
           drawer: HomePageDrawer(),
           body: FutureBuilder(
               future: courseCategoryFetch(),

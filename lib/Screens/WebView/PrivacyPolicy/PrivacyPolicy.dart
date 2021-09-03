@@ -12,7 +12,7 @@ class PrivacyPloicy extends StatelessWidget {
   Widget build(BuildContext context) {
     return WebviewScaffold(
       appBar: appBar(
-      titleText: "Privacy Policy", color: blue_sofa, leadingWidget: null),
+      titleText: "Privacy Policy", color: black, leadingWidget: null),
       url: urlString,
       withZoom: false,
     );

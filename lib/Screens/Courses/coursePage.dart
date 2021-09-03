@@ -51,7 +51,7 @@ class _CoursePageState extends State<CoursePage>
   Widget build(BuildContext context) {
     log(widget.courseId.toString());
     return Scaffold(
-        appBar: appBar(titleText: 'Lessons', color: blue_sofa),
+        appBar: appBar(titleText: 'Lessons', color: black),
         body: NestedScrollView(
           controller: scrollController,
           headerSliverBuilder: (context, innerBoxIsScrolled) {

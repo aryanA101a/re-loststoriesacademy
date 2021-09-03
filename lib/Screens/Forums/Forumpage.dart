@@ -68,24 +68,23 @@ class _ForumPageState extends State<ForumPage> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return FourmCategory(
-                                  context: context,
-                                  text: _fourmList[index].title.rendered,
-                                  color: Colors.amber,
-                                  img: _fourmList[index]
-                                      .embedded
-                                      .wpFeaturedmedia[0]
-                                      .sourceUrl,
-                 
-                                onpressed: (){
-                                       Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ForumTitleList(
-                                forumId: _fourmList[index].id,
-                              ),
-                            ));
-                                }
-                                );
+                                    context: context,
+                                    text: _fourmList[index].title.rendered,
+                                    color: Colors.amber,
+                                    img: _fourmList[index]
+                                        .embedded
+                                        .wpFeaturedmedia[0]
+                                        .sourceUrl,
+                                    onpressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ForumTitleList(
+                                              forumId: _fourmList[index].id,
+                                            ),
+                                          ));
+                                    });
                               }))),
                   SizedBox(
                     height: 10,
@@ -154,9 +153,9 @@ Widget FourmCategory(
                   Text(
                     text,
                     style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.white),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        color: Colors.white),
                   ),
                 ],
               ),
@@ -177,9 +176,7 @@ Widget FourmCategory(
             shape: BoxShape.circle,
           ),
           child: CircleAvatar(
-              radius: 30.0, 
-              backgroundColor: color, 
-              child: Image.network(img)),
+              radius: 30.0, backgroundColor: color, child: Image.network(img)),
         ),
       ]),
     ),

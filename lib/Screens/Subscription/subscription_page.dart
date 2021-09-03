@@ -19,7 +19,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: appBar(
-          titleText: "Subscription", color: blue_sofa, leadingWidget: null),
+          titleText: "Subscription", color: black, leadingWidget: null),
       body: ListView(
         shrinkWrap: true,
         children: [

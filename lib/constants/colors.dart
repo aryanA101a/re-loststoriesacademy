@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 const Color base_purple = Color(0xFF285FA7);
 const Color blue_sofa = Color(0xFF285FA7);
+const Color black = Colors.black;
 
 final kBackgroundColour = Color.fromRGBO(239, 238, 238, 1);
 final kOrange = Color.fromRGBO(238, 134, 48, 1); // rgb(238, 134, 48)

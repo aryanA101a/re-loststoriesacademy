@@ -12,7 +12,6 @@ import '../constants/auth.dart';
 class LoginServices {
   static var client = http.Client();
   static String lognUrl = "https://www.loststoriesacademy.com/wp-json/wp/login";
-  
 
   static Future login(context, String email, String password) async {
     try {
@@ -49,6 +48,9 @@ class LoginServices {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text('Something went wrong!')));
         }
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(response.body.toString())));
       }
     } catch (e) {
       if (e.message == 'Failed host lookup: \'www.loststoriesacademy.com\'') {

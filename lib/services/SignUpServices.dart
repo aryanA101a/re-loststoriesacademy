@@ -12,7 +12,6 @@ class SignUpServices {
   static var client = http.Client();
   static String signupUrl =
       "https://www.loststoriesacademy.com/wp-json/wp/v2/users";
-  
 
   static Future<bool> signUp(
       context, String username, String email, String password) async {
@@ -37,7 +36,6 @@ class SignUpServices {
               'capabilities': decodedData['capabilities'],
             })).then((value) => Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => NavBar())));
-     
           }
         } else if (value.statusCode == 500) {
           if (decodedData['code'] == "existing_user_email") {
@@ -46,16 +44,18 @@ class SignUpServices {
           } else if (decodedData["code"] == "existing_user_login") {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text("Sorry, that username already exists!")));
-          }  else {
+          } else {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text('Something went wrong!')));
           }
-        }else if(value.statusCode == 400){
+        } else if (value.statusCode == 400) {
           if (decodedData["code"] == "rest_invalid_param") {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("Sorry, Invalid email address!")));
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Sorry, Invalid email address!")));
           }
-
+        } else {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(value.body.toString())));
         }
       });
     } catch (e) {

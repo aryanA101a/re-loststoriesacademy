@@ -16,7 +16,6 @@ class _ProfileState extends State<Profile>
     with AutomaticKeepAliveClientMixin<Profile> {
   UserData data;
 
-
   // final UserDataServices userDataServices = UserDataServices();
   Future fetchUserData() async {
     await UserDataServices.dataFetch().then((userdata) {
@@ -34,8 +33,11 @@ class _ProfileState extends State<Profile>
     return FutureBuilder(
         future: fetchUserData(),
         builder: (BuildContext context, snapshot) {
-          if (snapshot.hasError) {
-            return Text("Something went wrong");
+          if (snapshot.data == null) {
+            return Center(
+              child:
+                  Text("Something went wrong. Most probably jwt token expired"),
+            );
           }
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
@@ -97,7 +99,8 @@ class _ProfileState extends State<Profile>
                                                         builder: (context) {
                                                           return EditProfile(
                                                             name: data.name,
-                                                            username: data.email,
+                                                            username:
+                                                                data.email,
                                                             imageUrl: data
                                                                 .avatarUrls[96],
                                                           );

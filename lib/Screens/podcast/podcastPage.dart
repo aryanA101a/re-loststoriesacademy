@@ -52,7 +52,7 @@ class _PodcastPageState extends State<PodcastPage>
           ),
         ),
         centerTitle: true,
-        backgroundColor: blue_sofa,
+        backgroundColor: black,
       ),
       // backgroundColor: Colors.blue,
       body: FutureBuilder(

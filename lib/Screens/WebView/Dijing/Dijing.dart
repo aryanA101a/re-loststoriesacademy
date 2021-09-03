@@ -9,7 +9,7 @@ class Dijing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WebviewScaffold(
-      appBar: appBar(titleText: "Dijing", color: blue_sofa, leadingWidget: null),
+      appBar: appBar(titleText: "Dijing", color: black, leadingWidget: null),
       withZoom: false,
       url: urlString);
   }

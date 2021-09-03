@@ -14,7 +14,7 @@ class TermsAndConditoon extends StatelessWidget {
     return WebviewScaffold(
       appBar: appBar(
           titleText: "Terms And Conditions",
-          color: blue_sofa,
+          color:black,
           leadingWidget: null),
       url: urlString,
       withZoom: false,

@@ -28,34 +28,37 @@ class ReviewsTab extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Wrap(
                           children: [
-                            ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(data.posts[index].avatarUrl),
-                              ),
-                              title: RichText(
-                                  text: TextSpan(
-                                      text: data.posts[index].user,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                      children: <TextSpan>[
-                                    TextSpan(
-                                        text: ' | ${data.posts[index].time}',
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage(data.posts[index].avatarUrl),
+                                ),
+                                title: RichText(
+                                    text: TextSpan(
+                                        text: data.posts[index].user,
                                         style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal))
-                                  ])),
-                              subtitle: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 5),
-                                child: Text(('⭐' * data.posts[index].mark) +
-                                    '\n${data.posts[index].content}'),
+                                            color: Colors.black,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                        children: <TextSpan>[
+                                      TextSpan(
+                                          text: ' | ${data.posts[index].time}',
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.normal))
+                                    ])),
+                                subtitle: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 5),
+                                  child: Text(('⭐' * data.posts[index].mark) +
+                                      '\n${data.posts[index].content}'),
+                                ),
+                                // contentPadding: EdgeInsets.all(18),
+                                // trailing: Text(),
                               ),
-                              // contentPadding: EdgeInsets.all(18),
-                              // trailing: Text(),
                             ),
                             Divider(
                               height: 0,

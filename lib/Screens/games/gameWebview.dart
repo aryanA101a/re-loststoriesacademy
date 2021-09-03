@@ -19,7 +19,7 @@ class GameWebview extends StatelessWidget {
       url: gameUrl,
       appBar: appBar(
         titleText: gameName,
-        color: blue_sofa,
+        color: black,
       ),
       withJavascript: true,
       withZoom: false,

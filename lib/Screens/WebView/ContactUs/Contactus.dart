@@ -13,7 +13,7 @@ class ContactUs extends StatelessWidget {
      return WebviewScaffold(
       appBar: appBar(
           titleText: "Contact Us",
-          color: blue_sofa,
+          color: black,
           leadingWidget: null),
       url: urlString,
       withZoom: false,

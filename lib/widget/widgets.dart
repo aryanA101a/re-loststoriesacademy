@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loststoriesacademy/Screens/games/gameWebview.dart';
 import 'package:loststoriesacademy/Screens/podcast/shadow_support_file/myPainter.dart';
 import 'package:loststoriesacademy/constants/colors.dart';
 import 'package:loststoriesacademy/constants/dimensions.dart';
-
 
 Widget textFormField(
   BuildContext context, {
@@ -351,7 +349,6 @@ Widget gamesBottomList(context,
     List nTitle,
     List gameUrl}) {
   return Container(
-    
     child: Column(
       children: [
         InkWell(
